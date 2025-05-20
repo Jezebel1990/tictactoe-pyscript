@@ -1,0 +1,80 @@
+h1 {
+    font-size: 3rem; 
+    font-family: 'Indie Flower', 'Comic Sans', cursive;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2rem; 
+    font-family: 'Indie Flower', 'Comic Sans', cursive;
+    text-align: center;
+}
+
+#board {
+    font-family: 'Indie Flower', 'Comic Sans', cursive;
+    position: relative;
+    font-size: 120px;
+    margin: 1% auto;
+    border-collapse: collapse;
+}
+#board td {
+    border: 4px solid rgb(60, 60, 60);
+    width: 90px;
+    height: 90px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+}
+
+#board td div {
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.x {
+    color: #DF2E38 !important;
+    position: relative;
+    font-size: 1.2em;
+    cursor: default;
+}
+.o {
+    color: #0118D8 !important;
+    position: relative;
+    font-size: 1.0em;
+    cursor: default;
+}
+
+@keyframes flash {
+    0%, 100% { background-color: #FBFF00; }
+    50% { background-color: black; }
+}
+
+.win {
+    animation: flash 0.3s ease-in-out 4;
+    animation-fill-mode: forwards;
+}
+
+
+/* Botão */
+button {
+    display: block;
+    margin: 20px auto;
+    font-family: 'Indie Flower', cursive;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    background-color: #f0ab3c;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d9912a;
+}

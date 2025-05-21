@@ -9,10 +9,14 @@
     <link rel="stylesheet" href="https://pyscript.net/snapshots/2024.9.2/core.css" />
     <script type="module" src="https://pyscript.net/snapshots/2024.9.2/core.js"></script>
 
-    <!-- Fontes e estilos personalizados -->
+    <!-- Fontes e estilos -->
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" />
     <link rel="stylesheet" href="./assets/css/tictactoe.css" />
     <link rel="stylesheet" href="./assets/css/page.css" />
+
+    <py-config>
+      packages = ["matplotlib", "micropip"]
+    </py-config>
 
     <style>
       #loading {
@@ -20,6 +24,38 @@
         border: none;
         background: transparent;
       }
+
+  .x {
+    color: #DF2E38 !important;
+    position: relative;
+    font-size: 1.2em;
+    cursor: default;
+}
+.o {
+    color: #0118D8 !important;
+    position: relative;
+    font-size: 1.0em;
+    cursor: default;
+}
+
+#graph-output {
+  text-align: center;
+}
+#graph-output canvas {
+  display: flex;
+  height: 300px;
+}
+
+
+.graph-title {
+   margin: 60px 0 5px 0; 
+}
+
+h3 {
+    font-size: 1.5rem; 
+    font-family: 'Indie Flower', 'Comic Sans', cursive;
+    text-align: center;
+}
     </style>
 
     <script type="module">
@@ -30,51 +66,61 @@
   </head>
 
   <body>
-  <div class="page-container">
-    <dialog id="loading">
-      <h1>Carregando...</h1>
-    </dialog>
+    <div class="page-container">
+      <dialog id="loading">
+        <h1>Carregando...</h1>
+      </dialog>
 
-    <nav class="navbar" style="background-color: #000000">
-      <div class="app-header">
-        <a href="/">
-          <img src="./assets/logo.png" class="logo" />
-        </a>
-        <a class="title" href="#" style="color: #f0ab3c">Tic Tac Toe</a>
-      </div>
-    </nav>
+      <nav class="navbar" style="background-color: #000000">
+        <div class="app-header">
+          <a href="/">
+            <img src="./assets/logo.png" class="logo" />
+          </a>
+          <a class="title" href="#" style="color: #f0ab3c">Tic Tac Toe</a>
+        </div>
+      </nav>
 
-    <main>
-    <section class="pyscript">
-      <h1>Jogo da Velha</h1>
+      <main>
+        <section class="pyscript">
+          <h1>Jogo da Velha</h1>
 
-      <table id="board">
-        <tr>
-          <td><div id="cell00" data-x="0" data-y="0" class="cell" py-click="GAME.click"></div></td>
-          <td><div id="cell01" data-x="0" data-y="1" class="cell" py-click="GAME.click"></div></td>
-          <td><div id="cell02" data-x="0" data-y="2" class="cell" py-click="GAME.click"></div></td>
-          
-        </tr>
-        <tr>
-          <td><div id="cell10" data-x="1" data-y="0" class="cell" py-click="GAME.click"></div></td>
-          <td><div id="cell11" data-x="1" data-y="1" class="cell" py-click="GAME.click"></div></td>
-          <td><div id="cell12" data-x="1" data-y="2" class="cell" py-click="GAME.click"></div></td>
-        </tr>
-        <tr>
-          <td><div id="cell20" data-x="2" data-y="0" class="cell" py-click="GAME.click"></div></td>
-          <td><div id="cell21" data-x="2" data-y="1" class="cell" py-click="GAME.click"></div></td>
-          <td><div id="cell22" data-x="2" data-y="2" class="cell" py-click="GAME.click"></div></td>
-        </tr>
-      </table>
+          <table id="board">
+            <tr>
+              <td><div id="cell00" class="cell"></div></td>
+              <td><div id="cell01" class="cell"></div></td>
+              <td><div id="cell02" class="cell"></div></td>
+            </tr>
+            <tr>
+              <td><div id="cell10" class="cell"></div></td>
+              <td><div id="cell11" class="cell"></div></td>
+              <td><div id="cell12" class="cell"></div></td>
+            </tr>
+            <tr>
+              <td><div id="cell20" class="cell"></div></td>
+              <td><div id="cell21" class="cell"></div></td>
+              <td><div id="cell22" class="cell"></div></td>
+            </tr>
+          </table>
 
-      <h2 id="status"></h2>
-      <button id="btn-new-game" py-click="GAME.new_game">NOVO JOGO</button>
+          <h3 id="status"></h3>
+          <button id="btn-new-game">NOVO JOGO</button>
 
-      <py-terminal></py-terminal>
-      <script type="py" src="./main.py"></script>
-    </section>
-   </main>
-      <!-- Rodapé -->
+            <div id="chart-container">
+              <h2 class="graph-title">Placar: Melhor de 3 jogos</h2>
+              <div id="graph-output"></div>
+            </div>
+          </div>
+
+          <div id="scoreboard">
+          <span id="score-x" style="display: none;"></span>
+          <span id="score-o" style="display: none;"></span>
+          <span id="score-draw" style="display: none;"></span>
+          <py-terminal></py-terminal>
+          <script type="py" src="./main.py"></script>
+        </section>
+      </main>
+
+    <!-- Rodapé -->
   <footer id="footer" class="footer">
   </footer>
  </div>

@@ -6,9 +6,10 @@ h1 {
 
 h2 {
     font-size: 2rem; 
-    font-family: 'Indie Flower', 'Comic Sans', cursive;
+    font-family: 'Indie Flower', sans-serif;
     text-align: center;
 }
+
 
 #board {
     font-family: 'Indie Flower', 'Comic Sans', cursive;
@@ -35,18 +36,7 @@ h2 {
     cursor: pointer;
 }
 
-.x {
-    color: #DF2E38 !important;
-    position: relative;
-    font-size: 1.2em;
-    cursor: default;
-}
-.o {
-    color: #0118D8 !important;
-    position: relative;
-    font-size: 1.0em;
-    cursor: default;
-}
+
 
 @keyframes flash {
     0%, 100% { background-color: #FBFF00; }
